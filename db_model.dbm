@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.1" last-position="0,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="tb_actividad">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="100" y="40"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="fecha_registro">
+		<type name="date" length="0"/>
+	</column>
+	<column name="fecha_limite">
+		<type name="date" length="0"/>
+	</column>
+	<column name="soporte">
+		<type name="raster" length="0"/>
+	</column>
+	<column name="estado">
+		<type name="varchar" length="10"/>
+	</column>
+	<column name="responsable_id">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="tb_actividad_pk" type="pk-constr" table="public.tb_actividad">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Responsable">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="540" y="40"/>
+	<column name="id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="correo">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="telefono">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Responsable_pk" type="pk-constr" table="public.&quot;Responsable&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Responsable_has_many_tb_actividad" type="rel1n"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#9f97e6"
+	 src-table="public.&quot;Responsable&quot;"
+	 dst-table="public.tb_actividad"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
